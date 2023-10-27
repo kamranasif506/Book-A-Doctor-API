@@ -1,11 +1,10 @@
 class Appointment < ApplicationRecord
-  
-  #Relationtip
+  # Relationtip
 
   belongs_to :user
   belongs_to :doctor
 
-  #Validation
+  # Validation
 
   validates :date, inclusion: { in: (Date.today..Date.today + 1.year) }
   validates :time, inclusion: { in: (Time.parse('9:00 AM')..Time.parse('5:00 PM')) }
