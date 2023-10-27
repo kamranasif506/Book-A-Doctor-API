@@ -1,5 +1,5 @@
 class Specialization < ApplicationRecord
   has_many :doctors
 
-  validates :doctor_name, presence: true
+  validates :name, presence: true
 end
