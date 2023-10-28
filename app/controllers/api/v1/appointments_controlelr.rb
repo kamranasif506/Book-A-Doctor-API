@@ -30,7 +30,6 @@ class Api::V1::AppointmentsController < ApplicationController
     end
   end
 
-
   private
 
   def set_appointment
