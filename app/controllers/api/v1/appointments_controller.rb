@@ -2,8 +2,8 @@ class Api::V1::AppointmentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_appointment, except: %i[index new create]
   def index
-    @appointment = current_user.appointments
-    render json: @appointment
+    @appointments = Appointment.all
+    render json: @appointments
   end
 
   def new
@@ -21,7 +21,6 @@ class Api::V1::AppointmentsController < ApplicationController
     @appointment.user = current_user
     @doctor = Doctor.find(params[:doctor_id])
     @appointment.doctor = @doctor
-    puts "IDG: #{@group.id}"
 
     if @appointment.save
       render json: @appointment, status: :created
@@ -39,7 +38,6 @@ class Api::V1::AppointmentsController < ApplicationController
   end
 
   def appointment_params
-    params.require(:appointment).permit(:date, :time, :duration).merge(user_id: current_user.id,
-                                                                       doctor_id: @doctor.id)
+    params.require(:appointment).permit(:date, :time, :duration, :doctor_id)
   end
 end
