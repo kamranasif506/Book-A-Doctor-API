@@ -50,6 +50,6 @@ end
 
 gem 'devise'
 gem 'devise-jwt'
+gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'jsonapi-serializer'
 gem 'rack-cors'
-gem 'dotenv-rails', require: 'dotenv/rails-now' 
