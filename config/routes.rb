@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/current_user', to: 'current_user#index'
 
   namespace :api do
     namespace :v1 do
@@ -22,6 +23,8 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+
+  # get current user
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
