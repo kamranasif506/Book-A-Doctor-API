@@ -80,7 +80,7 @@ RSpec.describe 'api/doctors', type: :request do
           profile_picture: { type: :string },
           bio: { type: :string },
           time_available_from: { type: :string },
-          time_available_to: { type: :string },
+          time_available_to: { type: :string }
         },
         required: %w[doc_name profile_picture bio time_available_from time_available_to
                      specialization_id]
