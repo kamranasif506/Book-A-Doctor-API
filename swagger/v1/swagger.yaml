@@ -1,0 +1,584 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  /api/v1/doctors:
+    get:
+      summary: List all doctors
+      tags:
+        - doctors
+      responses:
+        '200':
+          description: List of doctors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/doctor'
+    post:
+      summary: Create a doctor
+      tags:
+        - doctors
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/doctor'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/doctor'
+  /api/v1/doctors/{id}:
+    get:
+      summary: Get a doctor
+      tags:
+        - doctors
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: A doctor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/doctor'
+        '404':
+          description: Not found
+    patch:
+      summary: Update a doctor
+      tags:
+        - doctors
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/doctor'
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/doctor'
+        '404':
+          description: Not found
+    delete:
+      summary: Delete a doctor
+      tags:
+        - doctors
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/doctor'
+        '404':
+          description: Not found
+  /api/v1/specializations:
+    get:
+      summary: List all specializations
+      tags:
+        - specializations
+      responses:
+        '200':
+          description: List of specializations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/specialization'
+  /api/v1/appointments:
+    get:
+      summary: List all appointments
+      tags:
+        - appointments
+      responses:
+        '200':
+          description: List of appointments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/appointment'
+    post:
+      summary: Create an appointment
+      tags:
+        - appointments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/appointment'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/appointment'
+  /api/v1/appointments/{id}:
+    get:
+      summary: Get an appointment
+      tags:
+        - appointments
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: An appointment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/appointment'
+        '404':
+          description: Not found
+    patch:
+      summary: Update an appointment
+      tags:
+        - appointments
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/appointment'
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/appointment'
+        '404':
+          description: Not found
+    delete:
+      summary: Delete an appointment
+      tags:
+        - appointments
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/appointment'
+        '404':
+          description: Not found
+servers:
+  - url: https://localhost:3000/api/v1
+    variables:
+      environment:
+        enum:
+          - development
+          - production
+        default: development
+components:
+  schemas:
+    doctor:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        doctor_name:
+          type: string
+        profile_picture:
+          type: string
+        bio:
+          type: string
+        time_available_from:
+          type: string
+          format: time
+        time_available_to:
+          type: string
+          format: time
+        specialization_id:
+          type: integer
+          format: int64
+      required:
+        - doctor_name
+        - profile_picture
+        - bio
+        - time_available_from
+        - time_available_to
+        - specialization_id
+    specialization:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      required:
+        - name
+    appointment:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user_id:
+          type: integer
+          format: int64
+        doctor_id:
+          type: integer
+          format: int64
+        date:
+          type: string
+          format: date
+        time:
+          type: string
+          format: time
+        duration:
+          type: integer
+          format: int64
+      required:
+        - user_id
+        - doctor_id
+        - date
+        - time
+        - duration
+tags:
+  - name: doctors
+    description: Doctors
+  - name: specializations
+    description: Specializations
+  - name: appointments
+    description: Appointments
+
+
+# USE THE FOLLOWING COMMANDS TO GENERATE THE SWAGGER DOCUMENTATION
+
+# path config\routes.rb
+# Rails.application.routes.draw do
+#   mount Rswag::Ui::Engine => '/api-docs'
+#   mount Rswag::Api::Engine => '/api-docs'
+#   get '/current_user', to: 'current_user#index'
+
+#   namespace :api do
+#     namespace :v1 do
+#       resources :doctors do
+#         resources :appointments
+#       end
+#       get 'specializations/index'
+#       get 'doctors/create'
+#       get 'doctors/index'
+#       get 'doctors/show'
+#       get 'doctors/update'
+#       get 'doctors/destroy'
+#     end
+#   end
+#   devise_for :users, path: '', path_names: {
+#     sign_in: 'login',
+#     sign_out: 'logout',
+#     registration: 'signup'
+#   },
+#   controllers: {
+#     sessions: 'users/sessions',
+#     registrations: 'users/registrations'
+#   }
+
+#   # get current user
+#   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+#   # Defines the root path route ("/")
+#   # root "articles#index"
+# end
+
+
+#path db\schema.rb
+# # This file is auto-generated from the current state of the database. Instead
+# # of editing this file, please use the migrations feature of Active Record to
+# # incrementally modify your database, and then regenerate this schema definition.
+# #
+# # This file is the source Rails uses to define your schema when running `bin/rails
+# # db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
+# # be faster and is potentially less error prone than running all of your
+# # migrations from scratch. Old migrations may fail to apply correctly if those
+# # migrations use external dependencies or application code.
+# #
+# # It's strongly recommended that you check this file into your version control system.
+
+# ActiveRecord::Schema[7.0].define(version: 2023_10_28_100901) do
+#   # These are extensions that must be enabled in order to support this database
+#   enable_extension "plpgsql"
+
+#   create_table "appointments", force: :cascade do |t|
+#     t.bigint "user_id", null: false
+#     t.bigint "doctor_id", null: false
+#     t.date "date"
+#     t.time "time"
+#     t.integer "duration"
+#     t.datetime "created_at", null: false
+#     t.datetime "updated_at", null: false
+#     t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
+#     t.index ["user_id", "doctor_id"], name: "index_appointments_on_user_id_and_doctor_id", unique: true
+#     t.index ["user_id"], name: "index_appointments_on_user_id"
+#   end
+
+#   create_table "doctors", force: :cascade do |t|
+#     t.string "doctor_name"
+#     t.string "profile_picture"
+#     t.text "bio"
+#     t.time "time_available_from"
+#     t.time "time_available_to"
+#     t.bigint "specialization_id"
+#     t.datetime "created_at", null: false
+#     t.datetime "updated_at", null: false
+#     t.index ["specialization_id"], name: "index_doctors_on_specialization_id"
+#   end
+
+#   create_table "specializations", force: :cascade do |t|
+#     t.string "name"
+#     t.datetime "created_at", null: false
+#     t.datetime "updated_at", null: false
+#   end
+
+#   create_table "users", force: :cascade do |t|
+#     t.string "email", default: "", null: false
+#     t.string "encrypted_password", default: "", null: false
+#     t.string "reset_password_token"
+#     t.datetime "reset_password_sent_at"
+#     t.datetime "remember_created_at"
+#     t.datetime "created_at", null: false
+#     t.datetime "updated_at", null: false
+#     t.string "jti", null: false
+#     t.index ["email"], name: "index_users_on_email", unique: true
+#     t.index ["jti"], name: "index_users_on_jti", unique: true
+#     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+#   end
+
+#   add_foreign_key "appointments", "doctors"
+#   add_foreign_key "appointments", "users"
+#   add_foreign_key "doctors", "specializations"
+# end
+
+
+# Path app\controllers\api\v1\appointments_controller.rb
+# class Api::V1::AppointmentsController < ApplicationController
+#   before_action :authenticate_user!
+#   before_action :set_appointment, except: %i[index new create]
+#   def index
+#     @appointments = Appointment.all
+#     render json: @appointments
+#   end
+
+#   def new
+#     @appointment = Appointment.new
+#     render json: @appointment
+#   end
+
+#   def show
+#     @appointment = Appointment.find(params[:id])
+#     render json: @appointment
+#   end
+
+#   def create
+#     @appointment = Appointment.new(appointment_params)
+#     @appointment.user = current_user
+#     @doctor = Doctor.find(params[:doctor_id])
+#     @appointment.doctor = @doctor
+
+#     if @appointment.save
+#       render json: @appointment, status: :created
+#     else
+#       render json: @appointment.errors, status: :unprocessable_entity
+#     end
+#   end
+
+#   private
+
+#   def set_appointment
+#     @appointment = Appointment.find(params[:id])
+#   rescue ActiveRecord::RecordNotFound
+#     redirect_to root_path
+#   end
+
+#   def appointment_params
+#     params.require(:appointment).permit(:date, :time, :duration, :doctor_id)
+#   end
+# end
+
+# path app\controllers\api\v1\doctors_controller.rb
+# class Api::V1::DoctorsController < ApplicationController
+#   before_action :authenticate_user!
+#   def index
+#     @doctors = Doctor.all.includes(:appointments)
+#     render json: @doctors
+#   end
+
+#   def show
+#     @doctors = Doctor.all
+#     @doctor = @doctors.find(params[:id])
+#     render json: @doctor
+#   end
+
+#   def create
+#     @specialization = Specialization.find(params[:specialization_id])
+#     @doctor = @specialization.doctors.new(doctor_params)
+
+#     if @doctor.save
+#       render json: @doctor, status: :created
+#     else
+#       render json: @doctor.errors, status: :unprocessable_entity
+#     end
+#   end
+
+#   def update
+#     if @doctor.update(doctor_params)
+#       render json: @doctor, status: :success
+#     else
+#       render json: @doctor.errors, status: :unprocessable_entity
+#     end
+#   end
+
+#   def destroy
+#     if @doctor.destroy
+#       render json: { message: 'Doctor was successfully destroyed' }, status: :ok
+#     else
+#       render json: { errors: @doctor.errors.full_messages }, status: :unprocessable_entity
+#     end
+#   end
+
+#   private
+
+#   def set_doctor
+#     @doctor = Doctor.find(params[:id])
+#   end
+
+#   def doctor_params
+#     params.require(:doctor).permit(:doc_name, :profile_picture, :bio, :time_available_from,
+#                                    :time_available_to).merge(specialization_id: @specialization.id)
+#   end
+# end
+
+# path app\controllers\api\v1\specializations_controller.rb
+# class Api::V1::SpecializationsController < ApplicationController
+#   before_action :authenticate_user!
+#   def index
+#     @specializations = Specialization.all
+#   end
+# end
+
+# path app\controllers\current_user_controller.rb
+# class CurrentUserController < ApplicationController
+#   before_action :authenticate_user!
+#   def index
+#     render json: UserSerializer.new(current_user).serializable_hash[:data][:attributes], status: :ok
+#   end
+# end
+
+# path app\controllers\users\registrations_controller.rb
+# class Users::RegistrationsController < Devise::RegistrationsController
+#   include RackSessionFix
+#   respond_to :json
+
+#   private
+
+#   def respond_with(resource, _opts = {})
+#     if request.method == 'POST' && resource.persisted?
+#       render json: {
+#         status: { code: 200, message: 'Signed up sucessfully.' },
+#         data: UserSerializer.new(resource).serializable_hash[:data][:attributes]
+#       }, status: :ok
+#     elsif request.method == 'DELETE'
+#       render json: {
+#         status: { code: 200, message: 'Account deleted successfully.' }
+#       }, status: :ok
+#     else
+#       render json: {
+#         status: {
+#           code: 422,
+#           message: "User couldn't be created successfully. #{resource.errors.full_messages.to_sentence}"
+#         }
+#       }, status: :unprocessable_entity
+#     end
+#   end
+# end
+
+# path app\controllers\users\sessions_controller.rb
+# class Users::SessionsController < Devise::SessionsController
+#   include RackSessionFix
+#   respond_to :json
+
+#   private
+
+#   def respond_with(resource, _opts = {})
+#     render json: {
+#       status: { code: 200, message: 'Logged in sucessfully.' },
+#       data: UserSerializer.new(resource).serializable_hash[:data][:attributes]
+#     }, status: :ok
+#   end
+
+#   def respond_to_on_destroy
+#     if request.headers['Authorization'].present?
+#       jwt_payload = JWT.decode(request.headers['Authorization'].split.last,
+#                                ENV.fetch('devise_jwt_secret_key', nil)).first
+#       current_user = User.find(jwt_payload['sub'])
+#     end
+
+#     if current_user
+#       render json: {
+#         status: 200,
+#         message: 'Logged out successfully.'
+#       }, status: :ok
+#     else
+#       render json: {
+#         status: 401,
+#         message: "Couldn't find an active session."
+#       }, status: :unauthorized
+#     end
+#   end
+# end
+
