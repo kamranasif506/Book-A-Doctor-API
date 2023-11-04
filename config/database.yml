@@ -86,5 +86,4 @@ test:
 production:
   <<: *default
   database: Book_A_Doctor_API_production
-  username: Book_A_Doctor_API
-  password: <%= ENV["BOOK_A_DOCTOR_API_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
