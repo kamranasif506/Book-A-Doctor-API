@@ -19,11 +19,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_28_100901) do
     t.bigint "doctor_id", null: false
     t.date "date"
     t.time "time"
-    t.integer "duration"
+    t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
-    t.index ["user_id", "doctor_id"], name: "index_appointments_on_user_id_and_doctor_id", unique: true
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
