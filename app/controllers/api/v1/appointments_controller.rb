@@ -1,7 +1,6 @@
 class Api::V1::AppointmentsController < ApplicationController
   # before_action :authenticate_user!
 
-
   before_action :set_appointment, except: %i[index new create]
   def index
     @appointments = current_user.appointments
