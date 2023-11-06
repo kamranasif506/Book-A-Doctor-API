@@ -1,8 +1,9 @@
 class Api::V1::AppointmentsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
+
   before_action :set_appointment, except: %i[index new create]
   def index
-    @appointments = Appointment.all
+    @appointments = current_user.appointments
     render json: @appointments
   end
 
@@ -18,6 +19,7 @@ class Api::V1::AppointmentsController < ApplicationController
 
   def create
     @appointment = Appointment.new(appointment_params)
+    p("thsi is params#{@appointment}")
     @appointment.user = current_user
     @doctor = Doctor.find(params[:doctor_id])
     @appointment.doctor = @doctor
@@ -38,6 +40,7 @@ class Api::V1::AppointmentsController < ApplicationController
   end
 
   def appointment_params
-    params.require(:appointment).permit(:date, :time, :duration, :doctor_id)
+    p("thsi is params#{params}")
+    params.require(:appointment).permit(:location, :date, :time, :duration, :doctor_id)
   end
 end
