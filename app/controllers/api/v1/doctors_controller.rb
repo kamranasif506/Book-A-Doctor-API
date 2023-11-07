@@ -45,7 +45,11 @@ class Api::V1::DoctorsController < ApplicationController
   end
 
   def doctor_params
-    params.require(:doctor).permit(:doc_name, :profile_picture, :bio, :time_available_from,
+    params.require(:doctor).permit(:doctor_name,
+                                   :location, :doctorName,
+                                   :specializationId, :profile_picture, :bio,
+                                   :profilePicture, :specialization_id,
+                                   :time_available_from,
                                    :time_available_to).merge(specialization_id: @specialization.id)
   end
 end
