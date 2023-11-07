@@ -3,8 +3,8 @@ class Api::V1::AppointmentsController < ApplicationController
 
   before_action :set_appointment, except: %i[index new create]
   def index
-    @appointments = current_user.appointments
-    render json: @appointments
+    @appointments = current_user.appointments.includes(:doctor)
+    render json: @appointments, include: :doctor
   end
 
   def new

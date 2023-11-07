@@ -15,7 +15,7 @@ class Users::SessionsController < Devise::SessionsController
     if request.headers['Authorization'].present?
       begin
         jwt_payload = JWT.decode(request.headers['Authorization'].split.last,
-                                ENV.fetch('devise_jwt_secret_key', nil)).first
+                                 ENV.fetch('devise_jwt_secret_key', nil)).first
         current_user = User.find(jwt_payload['sub'])
       rescue JWT::ExpiredSignature
         render json: { status: 401, message: 'Token has expired.' }, status: :unauthorized
@@ -23,7 +23,7 @@ class Users::SessionsController < Devise::SessionsController
       rescue JWT::DecodeError
         render json: { status: 401, message: 'Token is invalid.' }, status: :unauthorized
         return
-      end  
+      end
     end
 
     if current_user
