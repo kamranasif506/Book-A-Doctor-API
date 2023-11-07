@@ -10,9 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_26_151527) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_03_063941) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appointments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "doctor_id", null: false
+    t.date "date"
+    t.time "time"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "location"
+    t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
+    t.index ["user_id"], name: "index_appointments_on_user_id"
+  end
 
   create_table "doctors", force: :cascade do |t|
     t.string "doctor_name"
@@ -23,6 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_26_151527) do
     t.bigint "specialization_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "location"
     t.index ["specialization_id"], name: "index_doctors_on_specialization_id"
   end
 
@@ -40,9 +54,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_26_151527) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "jti", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["jti"], name: "index_users_on_jti", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "appointments", "doctors"
+  add_foreign_key "appointments", "users"
   add_foreign_key "doctors", "specializations"
 end
