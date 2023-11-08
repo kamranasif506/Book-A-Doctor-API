@@ -30,6 +30,7 @@ class Api::V1::DoctorsController < ApplicationController
   end
 
   def destroy
+    @doctor = Doctor.find(params[:id])
     if @doctor.destroy
       render json: { message: 'Doctor was successfully destroyed' }, status: :ok
     else
@@ -45,6 +46,7 @@ class Api::V1::DoctorsController < ApplicationController
 
   def doctor_params
     params.require(:doctor).permit(:doctor_name,
+                                   :doctorId,
                                    :location, :doctorName,
                                    :specializationId, :profile_picture, :bio,
                                    :profilePicture, :specialization_id,

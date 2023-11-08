@@ -31,7 +31,3 @@ Doctor.create!(
      location: "USA",
      specialization_id: 3,
      bio:"A doctor from Harvard")
-
-
-
-
