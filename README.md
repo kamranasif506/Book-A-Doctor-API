@@ -163,8 +163,8 @@ Example:
 - LinkedIn: [](https://www.linkedin.com/in/)
 
 👤 **Kamran Asif**
-- GitHub: [](https://github.com/)
-- LinkedIn: [](https://www.linkedin.com/in/)
+- GitHub: [](https://github.com/kamranasif506)
+- LinkedIn: [](https://www.linkedin.com/in/kamran-asif)
 
 👤 **Hassan Shakur**
 - GitHub: [](https://github.com/)
@@ -179,6 +179,7 @@ Example:
 - [ ] **[Doctor request to users]**
 - [ ] **[Doctor availability]**
 - [ ] **[Allow user to appointment reminders]**
+- [ ] **[Authorization]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
