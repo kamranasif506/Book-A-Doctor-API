@@ -158,8 +158,9 @@ Example:
 - LinkedIn: [aklilu-mekonnen](https://www.linkedin.com/in/aklilu-mekonnen/)
 
 👤 **Addisalem Seifu**
-- GitHub: [](https://github.com/)
-- LinkedIn: [](https://www.linkedin.com/in/)
+- GitHub: [@addisalemseifu](https://github.com/githubhandle)
+- Twitter: [@Addisalem Seifu](https://twitter.com/addisalems92518)
+- LinkedIn: [addisalem seifu](https://www.linkedin.com/in/addisalemseifu/)
 
 👤 **Kamran Asif**
 - GitHub: [](https://github.com/kamranasif506)
@@ -172,6 +173,12 @@ Example:
 - LinkedIn: [hassanShakur](https://linkedin.com/in/hassanShakur)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- Documentation -->
+
+## 📖 Api-Documentation <a name="Api-Documentation"></a>
+
+- [Api-Documentation](http://localhost:4000/api-docs/index.html)
 
 <!-- FUTURE FEATURES -->
 
