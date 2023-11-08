@@ -8,27 +8,26 @@
 
 # 📗 Table of Contents
 
-- [📖 BookItNow](#about-project)
-  - [🛠 Built With](#built-with)
-    - [Tech Stack](#tech-stack)
-    - [Key Features](#key-features)
-  - [🚀 Link to front end](#link-to-frontend)
-  - [Kanban Board](#kanban)
-- [💻 Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Setup](#setup)
-  - [ERD-Diagram](#diagram)
-  - [Install](#install)
-  - [Usage](#usage)
-  - [Run tests](#run-tests)
-  - [Deployment](#deployment)
-- [👥 Authors](#authors)
-- [🔭 Future Features](#future-features)
-- [🤝 Contributing](#contributing)
-- [⭐️ Show your support](#support)
-- [🙏 Acknowledgements](#acknowledgements)
-- [❓ FAQ (OPTIONAL)](#faq)
-- [📝 License](#license)
+- [📗 Table of Contents](#-table-of-contents)
+- [📖 \[BookItNow\] ](#-bookitnow-)
+  - [🛠 Built With ](#-built-with-)
+    - [Tech Stack ](#tech-stack-)
+    - [Key Features ](#key-features-)
+  - [🚀 Link to front end ](#-link-to-front-end-)
+  - [🎬 Kanban Board ](#-kanban-board-)
+  - [🎬 ERD Diagram ](#-erd-diagram-)
+  - [💻 Getting Started ](#-getting-started-)
+    - [Prerequisites](#prerequisites)
+    - [Setup](#setup)
+    - [Install](#install)
+    - [Usage](#usage)
+    - [Deployment](#deployment)
+  - [👥 Authors ](#-authors-)
+  - [🔭 Future Features ](#-future-features-)
+  - [🤝 Contributing ](#-contributing-)
+  - [⭐️ Show your support ](#️-show-your-support-)
+  - [🙏 Acknowledgments ](#-acknowledgments-)
+  - [📝 License ](#-license-)
 
 <!-- PROJECT DESCRIPTION -->
 
@@ -167,8 +166,10 @@ Example:
 - LinkedIn: [](https://www.linkedin.com/in/kamran-asif)
 
 👤 **Hassan Shakur**
-- GitHub: [](https://github.com/)
-- LinkedIn: [](https://www.linkedin.com/in/)
+
+- GitHub: [@hassanShakur](https://github.com/hassanShakur)
+- Twitter: [@HassShakur](https://twitter.com/HassShakur)
+- LinkedIn: [hassanShakur](https://linkedin.com/in/hassanShakur)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
