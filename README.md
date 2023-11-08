@@ -158,8 +158,8 @@ Example:
 - LinkedIn: [aklilu-mekonnen](https://www.linkedin.com/in/aklilu-mekonnen/)
 
 👤 **Addisalem Seifu**
-- GitHub: [@addisalemseifu](https://github.com/githubhandle)
-- Twitter: [@Addisalem Seifu](https://twitter.com/addisalems92518)
+- GitHub: [@addisalemseifu](https://github.com/addisalemseifu)
+- Twitter: [@Addisalem Seifu](https://twitter.com/beidework)
 - LinkedIn: [addisalem seifu](https://www.linkedin.com/in/addisalemseifu/)
 
 👤 **Kamran Asif**
