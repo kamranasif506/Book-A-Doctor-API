@@ -10,12 +10,6 @@ Rails.application.routes.draw do
       resources :doctors do
         resources :appointments
       end
-      get 'specializations/index'
-      get 'doctors/create'
-      get 'doctors/index'
-      get 'doctors/show'
-      get 'doctors/update'
-      get 'doctors/destroy'
     end
   end
   devise_for :users, path: '', path_names: {
@@ -28,10 +22,5 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  # get current user
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
 end
 
