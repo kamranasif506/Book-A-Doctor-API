@@ -1,6 +1,4 @@
 class Api::V1::AppointmentsController < ApplicationController
-  # before_action :authenticate_user!
-
   before_action :set_appointment, except: %i[index new create]
   def index
     @appointments = current_user.appointments
@@ -19,7 +17,6 @@ class Api::V1::AppointmentsController < ApplicationController
 
   def create
     @appointment = Appointment.new(appointment_params)
-    p("thsi is params#{@appointment}")
     @appointment.user = current_user
     @doctor = Doctor.find(params[:doctor_id])
     @appointment.doctor = @doctor
@@ -40,7 +37,6 @@ class Api::V1::AppointmentsController < ApplicationController
   end
 
   def appointment_params
-    p("thsi is params#{params}")
-    params.require(:appointment).permit(:location, :date, :time, :duration, :doctor_id)
+    params.require(:appointment).permit(:location, :date, :time, :doctor_id, :docId)
   end
 end
